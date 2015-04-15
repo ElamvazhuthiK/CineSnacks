@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CineSnacks</string>
+
+    <string name="title_section1">Top News</string>
+    <string name="title_section2">Tamil</string>
+    <string name="title_section3">Telugu</string>
+    <string name="title_section4">Malayalam</string>
+    <string name="title_section5">Kannada</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
