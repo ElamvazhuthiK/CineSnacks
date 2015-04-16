@@ -13,12 +13,11 @@ import android.support.v4.widget.DrawerLayout;
 import com.cinesnacks.news.NewsFragment;
 import com.example.elamvazhuthik.cinesnacks.R;
 
-
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
+     * Fragment managing the behaviors, interactions and presentation of the navigation drawer  test.
      */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private NavigationDrawerFragment mNavigationDrawerFragment;
