@@ -1,5 +1,6 @@
 package com.cinesnacks.Base;
 
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,8 @@ import android.view.ViewGroup;
 
 import com.cinesnacks.news.NewsFragment;
 import com.example.elamvazhuthik.cinesnacks.R;
-//import com.viewpagerindicator.TabPageIndicator;
+import com.viewpagerindicator.TabPageIndicator;
+
 
 /**
  * Created by ElamvazhuthiK on 16/04/15.
@@ -30,14 +32,14 @@ public class MainViewPager extends Fragment {
     View rootView;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.cineviewpager_layout, container, false);
+        rootView = inflater.inflate(R.layout.mainviewpager_layout, container, false);
         FragmentPagerAdapter adapter = new MainPagerAdapter(getActivity().getSupportFragmentManager());
 
         ViewPager pager = (ViewPager)rootView.findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
-//        TabPageIndicator indicator = (TabPageIndicator)rootView.findViewById(R.id.indicator);
-//        indicator.setViewPager(pager);
+        TabPageIndicator indicator = (TabPageIndicator)rootView.findViewById(R.id.indicator);
+        indicator.setViewPager(pager);
 
         return rootView;
     }
