@@ -1,30 +1,21 @@
 package com.example.elamvazhuthik.cinesnacks;
 
-import android.app.Activity;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
+     * Fragment managing the behaviors, interactions and presentation of the navigation drawer  test.
      */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private NavigationDrawerFragment mNavigationDrawerFragment;
@@ -53,18 +44,17 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        TopNewsFragment topNewsFragment = new TopNewsFragment();
-        ViewPager viewPager = new ViewPager();
+
         Fragment containerFragment;
         switch (position) {
             case 0:
-                containerFragment = topNewsFragment;
+                containerFragment = new TopNewsFragment();
                 break;
             case 1:
-                containerFragment = viewPager;
+                containerFragment = new ViewPager();
                 break;
             default:
-                containerFragment = new Fragment();
+                containerFragment = new TopNewsFragment();;
                 break;
 
         }
