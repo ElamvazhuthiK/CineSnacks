@@ -1,4 +1,4 @@
-package com.example.elamvazhuthik.cinesnacks;
+package com.cinesnacks.news;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

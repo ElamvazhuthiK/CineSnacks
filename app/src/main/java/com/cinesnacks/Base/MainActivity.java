@@ -1,23 +1,17 @@
-package com.example.elamvazhuthik.cinesnacks;
+package com.cinesnacks.Base;
 
-import android.app.Activity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+
+import com.cinesnacks.news.NewsFragment;
+import com.example.elamvazhuthik.cinesnacks.R;
 
 
 public class MainActivity extends ActionBarActivity
@@ -53,25 +47,15 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        TopNewsFragment topNewsFragment = new TopNewsFragment();
-        ViewPager viewPager = new ViewPager();
         Fragment containerFragment;
         switch (position) {
-            case 0:
-                containerFragment = topNewsFragment;
-                break;
             case 1:
-                containerFragment = viewPager;
+                containerFragment = new MainViewPager();
                 break;
             default:
-                containerFragment = new Fragment();
+                containerFragment = new NewsFragment();
                 break;
-
         }
-        if(position == 0)
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.container, topNewsFragment)
-//                .commit();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, containerFragment)
                 .commit();

@@ -1,4 +1,4 @@
-package com.example.elamvazhuthik.cinesnacks;
+package com.cinesnacks.news;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.elamvazhuthik.cinesnacks.R;
+
 /**
  * Created by ElamvazhuthiK on 15/04/15.
  */
-public class TopNewsFragment extends Fragment {
+public class NewsFragment extends Fragment {
     View rootView;
     @Override
     public void onCreate(Bundle savedInstanceState) {

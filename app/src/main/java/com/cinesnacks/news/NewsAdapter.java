@@ -1,12 +1,13 @@
-package com.example.elamvazhuthik.cinesnacks;
+package com.cinesnacks.news;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.elamvazhuthik.cinesnacks.R;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class NewsAdapter extends ArrayAdapter<NewsModel.NewsItem> {
     public NewsAdapter(Context context, ArrayList<NewsModel.NewsItem> items) {
-        super(context,R.layout.newsrow_layout, items);
+        super(context, R.layout.newsrow_layout, items);
     }
 
     @Override
