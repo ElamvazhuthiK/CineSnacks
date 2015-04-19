@@ -1,18 +1,17 @@
 package com.cinesnacks.news;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Created by ElamvazhuthiK on 15/04/15.
  */
-public class NewsModel extends Object {
+public class NewsModel {
     public class NewsItem {
 
-        String strTitle = new String();
-        String strTitleIconLink = new String();
-        String strTime = new String();
-        String strDescription = new String();
+        String strTitle;
+        String strTitleIconLink;
+        String strTime;
+        String strDescription;
         NewsItem()
         {
 
