@@ -22,4 +22,8 @@
     <!--item android:state_activated="true" android:color="@color/vpi__bright_foreground_holo_dark"/-->
     <item android:color="@color/vpi__bright_foreground_holo_dark"/> <!-- not selected -->
 </selector>
+<<<<<<< HEAD
 <!-- From: file:/E:/Development/Android/CineSnacks/library/src/main/res/color/vpi__dark_theme.xml -->
+=======
+<!-- From: file:/Users/Elam/Development/Android/CineSnacks/library/src/main/res/color/vpi__dark_theme.xml -->
+>>>>>>> 57e1f2839d7568cc85de86a61fa8614a2643d4ff
