@@ -13,14 +13,13 @@ import android.view.ViewGroup;
 
 import com.cinesnacks.news.NewsFragment;
 import com.example.elamvazhuthik.cinesnacks.R;
-import com.viewpagerindicator.TabPageIndicator;
 
 
 /**
  * Created by ElamvazhuthiK on 16/04/15.
  */
 public class MainViewPager extends Fragment {
-    private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
+    private static final String[] CONTENT = new String[] { "News", "Photos","videos" };
     private static final int NEWS_PAGE = 0;
     private static final int PHOTO_PAGE = 1;
     private static final int VIDEO_PAGE = 2;
@@ -38,8 +37,7 @@ public class MainViewPager extends Fragment {
         ViewPager pager = (ViewPager)rootView.findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
-        TabPageIndicator indicator = (TabPageIndicator)rootView.findViewById(R.id.indicator);
-        indicator.setViewPager(pager);
+
 
         return rootView;
     }
@@ -64,7 +62,8 @@ public class MainViewPager extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return CONTENT[position % CONTENT.length].toUpperCase();
+
+            return CONTENT[position];
         }
 
         @Override

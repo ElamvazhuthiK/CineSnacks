@@ -14,7 +14,7 @@ import com.example.elamvazhuthik.cinesnacks.R;
 /**
  * Created by ElamvazhuthiK on 17/04/15.
  */
-public class NewsDescription extends Fragment {
+public final class NewsDescription extends Fragment {
     View rootView;
     String strNewsDesc;
 //    NewsDescription(NewsModel.NewsItem newsItem)

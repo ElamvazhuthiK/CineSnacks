@@ -3,8 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="25dp"
         android:src="@drawable/ic_drawer"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Title"
         android:id="@+id/textView1"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:padding="15dp"
         android:layout_gravity="center_horizontal" />
