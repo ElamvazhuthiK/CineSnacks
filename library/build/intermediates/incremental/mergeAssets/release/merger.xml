@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<merger version="3"><dataSet config="main"><source path="E:\Development\Android\CineSnacks\library\src\main\assets"/></dataSet><dataSet config="release"><source path="E:\Development\Android\CineSnacks\library\src\release\assets"/></dataSet></merger>
-=======
 <merger version="3"><dataSet config="main"><source path="/Users/Elam/Development/Android/CineSnacks/library/src/main/assets"/></dataSet><dataSet config="release"><source path="/Users/Elam/Development/Android/CineSnacks/library/src/release/assets"/></dataSet></merger>
->>>>>>> 57e1f2839d7568cc85de86a61fa8614a2643d4ff

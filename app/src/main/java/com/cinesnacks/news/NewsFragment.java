@@ -1,5 +1,6 @@
 package com.cinesnacks.news;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,8 +18,9 @@ import com.example.elamvazhuthik.cinesnacks.R;
  * Created by ElamvazhuthiK on 15/04/15.
  */
 public class NewsFragment extends Fragment {
-    View rootView;
-    NewsModel newsModel;
+    private View rootView;
+    ProgressDialog pDialog;
+    private NewsModel newsModel = new NewsModel();;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,23 +29,41 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.news_layout, container, false);
-        ListView listView = (ListView)rootView.findViewById(R.id.listView);
-        newsModel = new NewsModel();
-        ListAdapter newsAdapter = new NewsAdapter(getActivity().getBaseContext(), newsModel.newsAryList);
-        listView.setAdapter(newsAdapter);
-        listView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener(){
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                        NewsDescPager newsDescPager = new NewsDescPager();
-                        newsDescPager.setArguments(newsModel.newsAryList);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.container, newsDescPager)
-                                .commit();
-                    }
-                }
-        );
+
+        pDialog = new ProgressDialog(container.getContext());
+        pDialog.setMessage("Loading Recent ....");
+        pDialog.show();
+        newsModel.sendNewsRequest(container.getContext(), "http://clapboard.co.in/?json=get_recent_posts&exclude=content,thumbnail_images,thumbnail_size,custom_fields,attachments,tags,categories,excerpt,title_plain,status,url,slug,type,author,comments",
+        new NewsModelListener() {
+            @Override
+            public void response(Object response) {
+                ListView listView = (ListView)rootView.findViewById(R.id.listView);
+
+                ListAdapter newsAdapter = new NewsAdapter(getActivity().getBaseContext(), newsModel.getPosts());
+                listView.setAdapter(newsAdapter);
+                listView.setOnItemClickListener(
+                        new AdapterView.OnItemClickListener(){
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                NewsDescPager newsDescPager = new NewsDescPager();
+                                newsDescPager.setArguments(newsModel.getPosts());
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.container, newsDescPager)
+                                        .commit();
+                            }
+                        }
+                );
+
+                pDialog.dismiss();
+            }
+
+            @Override
+            public void error(String error) {
+                pDialog.dismiss();
+            }
+        } );
+
         return rootView;
     }
 }

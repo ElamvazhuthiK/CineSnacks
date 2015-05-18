@@ -1,4 +1,4 @@
-package com.cinesnacks.Base;
+package com.cinesnacks.base;
 
 
 import android.os.Bundle;

@@ -10,18 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cinesnacks.news.models.Post;
 import com.example.elamvazhuthik.cinesnacks.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ElamvazhuthiK on 18/04/15.
  */
 public class NewsDescPager extends Fragment {
     View rootView;
-    public ArrayList<NewsModel.NewsItem> newsArrayList;
-    public void setArguments(ArrayList<NewsModel.NewsItem> newsArrayList) {
-        this.newsArrayList = newsArrayList;
+    public List<Post> newsPostList;
+    public void setArguments(List<Post> newsPostList) {
+        this.newsPostList = newsPostList;
     }
 
     @Override
@@ -45,20 +46,23 @@ public class NewsDescPager extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
+            Post post = newsPostList.get(position);
             NewsDescription frg = new NewsDescription();
-            frg.setArguments(newsArrayList.get(position));
+            Bundle bundle = new Bundle();
+            bundle.putInt("postID", post.getId().intValue());
+            frg.setArguments(bundle);
             return frg;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            NewsModel.NewsItem newsItem = newsArrayList.get(position);
-            return newsItem.strTitle;
+            Post post = newsPostList.get(position);
+            return post.getTitle();
         }
 
         @Override
         public int getCount() {
-            return newsArrayList.size();
+            return newsPostList.size();
         }
     }
 }
