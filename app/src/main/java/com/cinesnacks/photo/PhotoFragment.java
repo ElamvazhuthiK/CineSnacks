@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,13 +44,13 @@ public class PhotoFragment extends Fragment {
                                 new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                                        NewsDescPager newsDescPager = new NewsDescPager();
-//                                        newsDescPager.setArguments(photoModel.getPosts());
-//                                        fragmentManager.beginTransaction()
-//                                                .replace(R.id.container, newsDescPager)
-//                                                .addToBackStack("NewsFragment")
-//                                                .commit();
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        GalleryViewPager galleryViewPager = new GalleryViewPager();
+                                        galleryViewPager.setArguments(photoModel.getPosts());
+                                        fragmentManager.beginTransaction()
+                                                .replace(R.id.container, galleryViewPager)
+                                                .addToBackStack("GalleryViewPager")
+                                                .commit();
                                     }
                                 }
                         );

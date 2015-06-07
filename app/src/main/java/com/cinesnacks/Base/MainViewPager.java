@@ -21,9 +21,9 @@ import com.example.elamvazhuthik.cinesnacks.R;
  */
 public class MainViewPager extends Fragment {
     private static final String[] CONTENT = new String[] { "News", "Photos","videos" };
-    private static final int NEWS_PAGE = 0;
-    private static final int PHOTO_PAGE = 1;
-    private static final int VIDEO_PAGE = 2;
+    private static final int NEWS_PAGE = 1;
+    private static final int PHOTO_PAGE = 2;
+    private static final int VIDEO_PAGE = 3;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

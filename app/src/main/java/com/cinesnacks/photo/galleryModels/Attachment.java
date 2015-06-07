@@ -32,6 +32,7 @@ public class Attachment {
     @Expose
     private Images images;
 
+
     /**
      *
      * @return
@@ -193,5 +194,4 @@ public class Attachment {
     public void setImages(Images images) {
         this.images = images;
     }
-
 }
