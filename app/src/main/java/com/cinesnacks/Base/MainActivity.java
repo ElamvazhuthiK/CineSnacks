@@ -49,16 +49,20 @@ public class MainActivity extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment containerFragment;
+//        String backStackFragment;
         switch (position) {
             case 1:
                 containerFragment = new MainViewPager();
+//                backStackFragment = "MainViewPager";
                 break;
             default:
                 containerFragment = new NewsFragment();
+//                backStackFragment = "NewsFragment";
                 break;
         }
         fragmentManager.beginTransaction()
                 .replace(R.id.container, containerFragment)
+//                .addToBackStack("NewsFragment")
                 .commit();
     }
 
@@ -103,6 +107,29 @@ public class MainActivity extends ActionBarActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+//    public void onBackPressed()
+//    {
+//        // Catch back action and pops from backstack
+//        // (if you called previously to addToBackStack() in your transaction)
+//        if (getSupportFragmentManager().getBackStackEntryCount() > 0){
+//            getSupportFragmentManager().popBackStack();
+//        }
+//        // Default action on back pressed
+//        else super.onBackPressed();
+//    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            if (getSupportFragmentManager().getBackStackEntryCount() > 0){
+//                getSupportFragmentManager().popBackStack();
+//            }
+//            return true;
+//        }else {
+////            exitAlert();
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }
 
 

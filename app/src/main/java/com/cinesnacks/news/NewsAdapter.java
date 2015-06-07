@@ -1,6 +1,7 @@
 package com.cinesnacks.news;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cinesnacks.connections.http.DownloadImage;
+import com.cinesnacks.connections.http.DownloadImageListener;
 import com.cinesnacks.news.models.Post;
 import com.example.elamvazhuthik.cinesnacks.R;
 
@@ -29,7 +31,30 @@ public class NewsAdapter extends ArrayAdapter<Post> {
         Post post = getItem(position);
         TextView title = (TextView)theRow.findViewById(R.id.textViewTitle);
         ImageView icon = (ImageView)theRow.findViewById (R.id.image);
-        new DownloadImage(icon).execute(post.getThumbnail());
+
+        new DownloadImage(icon, new DownloadImageListener() {
+            @Override
+            public void gotImage(Bitmap bitmap) {
+            }
+            @Override
+            public void gotError() {
+            }
+        } ).execute(post.getThumbnail());
+//        Bitmap bitmap = post.getBitmapThumbnail();
+//        if(bitmap != null) {
+//            icon.setImageBitmap(bitmap);
+//        }else {
+//            new DownloadImage(icon, new DownloadImageListener() {
+//                @Override
+//                public void gotImage(Bitmap bitmap) {
+//                    icon.setImageBitmap(bitmap);
+//                }
+//                @Override
+//                public void gotError() {
+//
+//                }
+//            } ).execute(post.getThumbnail());
+//        }
 //        TextView description = (TextView)theRow.findViewById(R.id.textView2);google
         title.setText(post.getTitle());
         return theRow;

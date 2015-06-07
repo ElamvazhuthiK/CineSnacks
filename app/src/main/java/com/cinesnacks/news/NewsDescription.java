@@ -36,6 +36,7 @@ public final class NewsDescription extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.newsdesc_layout, container, false);
         pDialog = new ProgressDialog(container.getContext());
         pDialog.setMessage("Loading Description ....");

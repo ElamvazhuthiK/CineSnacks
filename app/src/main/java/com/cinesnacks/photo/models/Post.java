@@ -1,17 +1,14 @@
-package com.cinesnacks.news.models;
+package com.cinesnacks.photo.models;
 
 /**
- * Created by ElamvazhuthiK on 5/14/15.
+ * Created by ElamvazhuthiK on 5/27/15.
  */
-//import javax.annotation.Generated;
-import android.graphics.Bitmap;
-
-import com.cinesnacks.connections.http.DownloadImageListener;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 //@Generated("org.jsonschema2pojo")
-public class Post  {
+public class Post {
+
     @Expose
     private Integer id;
     @Expose
@@ -20,16 +17,8 @@ public class Post  {
     private String date;
     @Expose
     private String modified;
-    @SerializedName("comment_count")
-    @Expose
-    private Integer commentCount;
-    @SerializedName("comment_status")
-    @Expose
-    private String commentStatus;
     @Expose
     private String thumbnail;
-
-    private Bitmap bitmapThumbnail;
     @SerializedName("thumbnail_size")
     @Expose
     private String thumbnailSize;
@@ -112,42 +101,6 @@ public class Post  {
     /**
      *
      * @return
-     * The commentCount
-     */
-    public Integer getCommentCount() {
-        return commentCount;
-    }
-
-    /**
-     *
-     * @param commentCount
-     * The comment_count
-     */
-    public void setCommentCount(Integer commentCount) {
-        this.commentCount = commentCount;
-    }
-
-    /**
-     *
-     * @return
-     * The commentStatus
-     */
-    public String getCommentStatus() {
-        return commentStatus;
-    }
-
-    /**
-     *
-     * @param commentStatus
-     * The comment_status
-     */
-    public void setCommentStatus(String commentStatus) {
-        this.commentStatus = commentStatus;
-    }
-
-    /**
-     *
-     * @return
      * The thumbnail
      */
     public String getThumbnail() {
@@ -162,37 +115,6 @@ public class Post  {
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
-
-    public void getBitmapThumbnail(final DownloadImageListener dlListener) {
-//        if (bitmapThumbnail == null && thumbnail != null) {
-//            new DownloadImage(new DownloadImageListener() {
-//                @Override
-//                public void gotImage(Bitmap bitmap) {
-//                    bitmapThumbnail = bitmap;
-//                    if(dlListener != null)
-//                    {
-//                        dlListener.gotImage(bitmap);
-//                    }
-//                }
-//
-//                @Override
-//                public void gotError() {
-//                    bitmapThumbnail = null;
-//                    if(dlListener != null)
-//                    {
-//                        dlListener.gotError();
-//                    }
-//                }
-//            }).execute(getThumbnail());
-//        }
-//        else {
-//            if(dlListener != null)
-//            {
-//                dlListener.gotImage(bitmapThumbnail);
-//            }
-//        }
-    }
-    public void setBitmapThumbnail(Bitmap bitmapThumbnail) {this.bitmapThumbnail = bitmapThumbnail;}
 
     /**
      *

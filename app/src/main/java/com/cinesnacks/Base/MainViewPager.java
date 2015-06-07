@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cinesnacks.news.NewsFragment;
+import com.cinesnacks.photo.PhotoFragment;
 import com.example.elamvazhuthik.cinesnacks.R;
 
 
@@ -53,7 +54,7 @@ public class MainViewPager extends Fragment {
                 case NEWS_PAGE:
                     return new NewsFragment();
                 case PHOTO_PAGE:
-                    return new NewsFragment();
+                    return new PhotoFragment();
                 case VIDEO_PAGE:
                     return new NewsFragment();
             }

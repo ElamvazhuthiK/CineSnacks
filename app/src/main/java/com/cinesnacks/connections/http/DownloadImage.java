@@ -10,20 +10,18 @@ import java.io.InputStream;
 /**
  * Created by ElamvazhuthiK on 5/17/15.
  */
-public class DownloadImage extends AsyncTask<String, Void, Bitmap> {
-    ImageView bmImage;
-//    ProgressDialog pDialog;
 
-    public DownloadImage(ImageView bmImage) {
-        this.bmImage = bmImage;
+public class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+    ImageView imageView;
+    DownloadImageListener imageListener;
+    public DownloadImage(ImageView imageView, DownloadImageListener imageListener) {
+        this.imageView = imageView;
+        this.imageListener = imageListener;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-//        pDialog = new ProgressDialog(bmImage.getContext());
-//        pDialog.show();
-
     }
 
     protected Bitmap doInBackground(String... urls) {
@@ -33,20 +31,17 @@ public class DownloadImage extends AsyncTask<String, Void, Bitmap> {
             InputStream in = new java.net.URL(urlDisplay).openStream();
             mIcon11 = BitmapFactory.decodeStream(in);
         } catch (Exception e) {
-//            Log.e("Error", e.getMessage());
             e.printStackTrace();
-//            pDialog.dismiss();
         }
         return mIcon11;
     }
 
     protected void onPostExecute(Bitmap image) {
-
-        if(image != null){
-            bmImage.setImageBitmap(image);
-//            pDialog.dismiss();
-//        }else{
-//            pDialog.dismiss();
+        if(image != null) {
+            this.imageView.setImageBitmap(image);
+            this.imageListener.gotImage(image);
+        }else{
+            this.imageListener.gotError();
         }
     }
 }

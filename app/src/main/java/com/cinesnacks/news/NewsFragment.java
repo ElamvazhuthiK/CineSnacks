@@ -20,14 +20,14 @@ import com.example.elamvazhuthik.cinesnacks.R;
 public class NewsFragment extends Fragment {
     private View rootView;
     ProgressDialog pDialog;
-    private NewsModel newsModel = new NewsModel();;
+    private NewsModel newsModel = new NewsModel();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.news_layout, container, false);
 
         pDialog = new ProgressDialog(container.getContext());
@@ -50,6 +50,7 @@ public class NewsFragment extends Fragment {
                                 newsDescPager.setArguments(newsModel.getPosts());
                                 fragmentManager.beginTransaction()
                                         .replace(R.id.container, newsDescPager)
+                                        .addToBackStack("NewsFragment")
                                         .commit();
                             }
                         }
@@ -66,4 +67,15 @@ public class NewsFragment extends Fragment {
 
         return rootView;
     }
+
+//    public void onBackPressed()
+//    {
+//        // Catch back action and pops from backstack
+//        // (if you called previously to addToBackStack() in your transaction)
+//        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0){
+//            getActivity().getSupportFragmentManager().popBackStack();
+//        }
+//        // Default action on back pressed
+//        else super.getActivity().onBackPressed();
+//    }
 }
