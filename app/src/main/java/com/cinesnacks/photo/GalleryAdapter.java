@@ -29,7 +29,7 @@ public class GalleryAdapter extends ArrayAdapter<Attachment> {
         LayoutInflater theInflater = LayoutInflater.from(getContext());
         View theCell = theInflater.inflate(R.layout.photogallery_gridcellview_layout, parent, false);
         Attachment attachment = getItem(position);
-        ImageView icon = (ImageView)theCell.findViewById (R.id.image);
+        ImageView icon = (ImageView)theCell.findViewById (R.id.galleryCellImage);
 
         new DownloadImage(icon, new DownloadImageListener() {
             @Override
