@@ -29,7 +29,7 @@ public class GalleryViewPager extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.photogalleryviewpager_layout, container, false);
         FragmentPagerAdapter adapter = new PhotosPagerAdapter(getActivity().getSupportFragmentManager());
-        ViewPager pager = (ViewPager)rootView.findViewById(R.id.pager);
+        ViewPager pager = (ViewPager)rootView.findViewById(R.id.galleryPager);
         pager.setAdapter(adapter);
         return rootView;
     }
@@ -57,6 +57,7 @@ public class GalleryViewPager extends Fragment {
 
         @Override
         public int getCount() {
+            System.out.println("size:"+photosPostList.size());
             return photosPostList.size();
         }
     }

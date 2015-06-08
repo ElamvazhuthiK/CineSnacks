@@ -37,7 +37,7 @@ public class NewsFragment extends Fragment {
         new NewsModelListener() {
             @Override
             public void response(Object response) {
-                ListView listView = (ListView)rootView.findViewById(R.id.listView);
+                ListView listView = (ListView)rootView.findViewById(R.id.newsListView);
 
                 ListAdapter newsAdapter = new NewsAdapter(getActivity().getBaseContext(), newsModel.getPosts());
                 listView.setAdapter(newsAdapter);

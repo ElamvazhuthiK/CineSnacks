@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.elamvazhuthik.cinesnacks.R;
@@ -28,7 +27,7 @@ public class PhotoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        rootView = inflater.inflate(R.layout.news_layout, container, false);
+        rootView = inflater.inflate(R.layout.photo_layout, container, false);
         pDialog = new ProgressDialog(container.getContext());
         pDialog.setMessage("Loading Photos ....");
         pDialog.show();
@@ -36,9 +35,9 @@ public class PhotoFragment extends Fragment {
                 new PhotoModelListener() {
                     @Override
                     public void response(Object response) {
-                        ListView listView = (ListView) rootView.findViewById(R.id.listView);
+                        ListView listView = (ListView) rootView.findViewById(R.id.photoListView);
 
-                        ListAdapter photoAdapter = new PhotoAdapter(getActivity().getBaseContext(), photoModel.getPosts());
+                        PhotoAdapter photoAdapter = new PhotoAdapter(getActivity().getBaseContext(), photoModel.getPosts());
                         listView.setAdapter(photoAdapter);
                         listView.setOnItemClickListener(
                                 new AdapterView.OnItemClickListener() {
