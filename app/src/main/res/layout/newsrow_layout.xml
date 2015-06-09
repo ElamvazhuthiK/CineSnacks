@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/newsImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/ic_drawer"
@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textViewNewsTitle"
         android:textSize="16sp"
         android:textStyle="bold"
          />

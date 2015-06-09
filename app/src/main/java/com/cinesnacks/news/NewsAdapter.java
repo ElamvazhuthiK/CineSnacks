@@ -29,8 +29,8 @@ public class NewsAdapter extends ArrayAdapter<Post> {
         LayoutInflater theInflater = LayoutInflater.from(getContext());
         View theRow = theInflater.inflate(R.layout.newsrow_layout, parent, false);
         Post post = getItem(position);
-        TextView title = (TextView)theRow.findViewById(R.id.textViewTitle);
-        ImageView icon = (ImageView)theRow.findViewById (R.id.image);
+        TextView title = (TextView)theRow.findViewById(R.id.textViewNewsTitle);
+        ImageView icon = (ImageView)theRow.findViewById (R.id.newsImage);
 
         new DownloadImage(icon, new DownloadImageListener() {
             @Override

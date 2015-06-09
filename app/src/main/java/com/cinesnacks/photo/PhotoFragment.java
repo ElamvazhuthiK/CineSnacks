@@ -27,7 +27,7 @@ public class PhotoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        rootView = inflater.inflate(R.layout.photo_layout, container, false);
+        rootView = inflater.inflate(R.layout.list_layout, container, false);
         pDialog = new ProgressDialog(container.getContext());
         pDialog.setMessage("Loading Photos ....");
         pDialog.show();
@@ -35,7 +35,7 @@ public class PhotoFragment extends Fragment {
                 new PhotoModelListener() {
                     @Override
                     public void response(Object response) {
-                        ListView listView = (ListView) rootView.findViewById(R.id.photoListView);
+                        ListView listView = (ListView) rootView.findViewById(R.id.listView);
 
                         PhotoAdapter photoAdapter = new PhotoAdapter(getActivity().getBaseContext(), photoModel.getPosts());
                         listView.setAdapter(photoAdapter);
@@ -56,7 +56,6 @@ public class PhotoFragment extends Fragment {
 
                         pDialog.dismiss();
                     }
-
                     @Override
                     public void error(String error) {
                         pDialog.dismiss();
