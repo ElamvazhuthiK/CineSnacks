@@ -35,12 +35,8 @@ public class MainViewPager extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.mainviewpager_layout, container, false);
         FragmentPagerAdapter adapter = new MainPagerAdapter(getActivity().getSupportFragmentManager());
-
-        ViewPager pager = (ViewPager)rootView.findViewById(R.id.pager);
+        ViewPager pager = (ViewPager)rootView.findViewById(R.id.mainPager);
         pager.setAdapter(adapter);
-
-
-
         return rootView;
     }
 

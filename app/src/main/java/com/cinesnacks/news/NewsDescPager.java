@@ -29,7 +29,7 @@ public class NewsDescPager extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.newsdescviewpager_layout, container, false);
         FragmentPagerAdapter adapter = new NewsPagerAdapter(getActivity().getSupportFragmentManager());
-        ViewPager pager = (ViewPager)rootView.findViewById(R.id.pager);
+        ViewPager pager = (ViewPager)rootView.findViewById(R.id.newsPager);
         pager.setAdapter(adapter);
         return rootView;
     }

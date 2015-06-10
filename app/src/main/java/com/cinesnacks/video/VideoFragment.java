@@ -1,14 +1,19 @@
 package com.cinesnacks.video;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.cinesnacks.video.models.Post;
 import com.example.elamvazhuthik.cinesnacks.R;
 
 /**
@@ -29,29 +34,35 @@ public class VideoFragment  extends Fragment {
         pDialog = new ProgressDialog(container.getContext());
         pDialog.setMessage("Loading Videos ....");
         pDialog.show();
-        videoModel.sendVideoRequest(container.getContext(), "http://clapboard.co.in/?json=get_posts&cat=5&exclude=attachments,thumbnail,url,tags,categories,excerpt,title_plain,status,slug,type,author,comments,comment_count,comment_status,previous_url,custom_fields",
+        videoModel.sendVideoRequest(container.getContext(), "http://clapboard.co.in/?json=get_posts&cat=5&exclude=attachments,url,tags,categories,excerpt,title_plain,status,slug,type,author,comments,comment_count,comment_status,previous_url,custom_fields",
                 new VideoModelListener() {
                     @Override
                     public void response(Object response) {
                         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-
                         VideoAdapter videoAdapter = new VideoAdapter(getActivity().getBaseContext(), videoModel.getPosts());
                         listView.setAdapter(videoAdapter);
-//                        listView.setOnItemClickListener(
-//                                new AdapterView.OnItemClickListener() {
-//                                    @Override
-//                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                                        GalleryViewPager galleryViewPager = new GalleryViewPager();
-//                                        galleryViewPager.setArguments(videoModel.getPost());
-//                                        fragmentManager.beginTransaction()
-//                                                .replace(R.id.container, galleryViewPager)
-//                                                .addToBackStack("GalleryViewPager")
-//                                                .commit();
-//                                    }
-//                                }
-//                        );
-
+                        listView.setOnItemClickListener(
+                                new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Post post = videoModel.getPosts().get(position);
+                                        int start = post.getContent().indexOf("<iframe");
+                                        int end = post.getContent().indexOf("iframe>");
+                                        String subStr = post.getContent().substring(start, end);
+                                        start = subStr.indexOf("https:");
+                                        end = subStr.indexOf("?");
+                                        subStr = subStr.substring(start, end);
+                                        try{
+                                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(subStr));
+                                            getActivity().startActivity(intent);
+                                        }catch (ActivityNotFoundException ex){
+                                            Intent intent=new Intent(Intent.ACTION_VIEW,
+                                                    Uri.parse(subStr));
+                                            getActivity().startActivity(intent);
+                                        }
+                                    }
+                                }
+                        );
                         pDialog.dismiss();
                     }
                     @Override

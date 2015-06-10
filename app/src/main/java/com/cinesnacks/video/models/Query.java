@@ -1,7 +1,7 @@
 package com.cinesnacks.video.models;
 
 /**
- * Created by ElamvazhuthiK on 6/9/15.
+ * Created by ElamvazhuthiK on 6/10/15.
  */
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -38,7 +38,7 @@ public class GalleryAdapter extends ArrayAdapter<Attachment> {
             @Override
             public void gotError() {
             }
-        } ).execute(attachment.getImages().getThumbnail().getUrl());
+        } ).execute(attachment.getImages().getTieSmall().getUrl());
 //        new DownloadImage(icon, new DownloadImageListener() {
 //            @Override
 //            public void gotImage(Bitmap bitmap) {

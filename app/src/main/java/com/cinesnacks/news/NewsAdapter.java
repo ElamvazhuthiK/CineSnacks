@@ -39,7 +39,7 @@ public class NewsAdapter extends ArrayAdapter<Post> {
             @Override
             public void gotError() {
             }
-        } ).execute(post.getThumbnail());
+        } ).execute(post.getThumbnailImages().getTieSmall().getUrl());
 //        Bitmap bitmap = post.getBitmapThumbnail();
 //        if(bitmap != null) {
 //            icon.setImageBitmap(bitmap);

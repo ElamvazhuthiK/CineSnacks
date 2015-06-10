@@ -50,7 +50,7 @@ public class NewsFragment extends Fragment {
                                 newsDescPager.setArguments(newsModel.getPosts());
                                 fragmentManager.beginTransaction()
                                         .replace(R.id.container, newsDescPager)
-                                        .addToBackStack("NewsFragment")
+                                        .addToBackStack("NewsDescPager")
                                         .commit();
                             }
                         }

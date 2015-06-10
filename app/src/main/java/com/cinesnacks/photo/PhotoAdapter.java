@@ -39,7 +39,7 @@ public class PhotoAdapter extends ArrayAdapter<Post> {
             @Override
             public void gotError() {
             }
-        } ).execute(post.getThumbnail());
+        } ).execute(post.getThumbnailImages().getTieSmall().getUrl());
 //        Bitmap bitmap = post.getBitmapThumbnail();
 //        if(bitmap != null) {
 //            icon.setImageBitmap(bitmap);
