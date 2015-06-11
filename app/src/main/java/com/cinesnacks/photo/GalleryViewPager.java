@@ -57,7 +57,6 @@ public class GalleryViewPager extends Fragment {
 
         @Override
         public int getCount() {
-            System.out.println("size:"+photosPostList.size());
             return photosPostList.size();
         }
     }

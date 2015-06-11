@@ -27,10 +27,9 @@ public class GalleryAdapter extends ArrayAdapter<Attachment> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater theInflater = LayoutInflater.from(getContext());
-        View theCell = theInflater.inflate(R.layout.photogallery_gridcellview_layout, parent, false);
+        final View theCell = theInflater.inflate(R.layout.photogallery_gridcellview_layout, parent, false);
         Attachment attachment = getItem(position);
         ImageView icon = (ImageView)theCell.findViewById (R.id.galleryCellImage);
-
         new DownloadImage(icon, new DownloadImageListener() {
             @Override
             public void gotImage(Bitmap bitmap) {
@@ -39,31 +38,6 @@ public class GalleryAdapter extends ArrayAdapter<Attachment> {
             public void gotError() {
             }
         } ).execute(attachment.getImages().getTieSmall().getUrl());
-//        new DownloadImage(icon, new DownloadImageListener() {
-//            @Override
-//            public void gotImage(Bitmap bitmap) {
-//            }
-//            @Override
-//            public void gotError() {
-//            }
-//        } ).execute(images.getThumbnail());
-//        Bitmap bitmap = post.getBitmapThumbnail();
-//        if(bitmap != null) {
-//            icon.setImageBitmap(bitmap);
-//        }else {
-//            new DownloadImage(icon, new DownloadImageListener() {
-//                @Override
-//                public void gotImage(Bitmap bitmap) {
-//                    icon.setImageBitmap(bitmap);
-//                }
-//                @Override
-//                public void gotError() {
-//
-//                }
-//            } ).execute(post.getThumbnail());
-//        }
-//        TextView description = (TextView)theCell.findViewById(R.id.textView2);google
-//        title.setText(post.getTitle());
         return theCell;
     }
 }

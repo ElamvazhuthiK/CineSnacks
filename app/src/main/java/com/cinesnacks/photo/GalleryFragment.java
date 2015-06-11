@@ -4,9 +4,11 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.elamvazhuthik.cinesnacks.R;
@@ -15,9 +17,7 @@ import com.example.elamvazhuthik.cinesnacks.R;
  * Created by ElamvazhuthiK on 6/7/15.
  */
 public class GalleryFragment extends Fragment {
-
     View rootView;
-    String strNewsDesc;
     ProgressDialog pDialog;
     int postID;
     private PhotoModel photoModel = new PhotoModel();
@@ -46,27 +46,25 @@ public class GalleryFragment extends Fragment {
                 new PhotoModelListener() {
                     @Override
                     public void response(Object response) {
-                    GridView gridView = (GridView) rootView.findViewById(R.id.gridView);
+                        GridView gridView = (GridView) rootView.findViewById(R.id.gridView);
                         GalleryAdapter galleryAdapter = new GalleryAdapter(getActivity().getBaseContext(), photoModel.getAttachments());
                         gridView.setAdapter(galleryAdapter);
-//                        gridView.setOnItemClickListener(
-//                            new AdapterView.OnItemClickListener()
-//
-//                    {
-//                        @Override
-//                        public void onItemClick (AdapterView < ? > parent, View view,int position,
-//                        long id){
-//                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                        GalleryViewPager galleryViewPager = new GalleryViewPager();
-//                        galleryViewPager.setArguments(photoModel.getPosts());
-//                        fragmentManager.beginTransaction()
-//                                .replace(R.id.container, galleryViewPager)
-//                                .addToBackStack("GalleryViewPager")
-//                                .commit();
-//                    }
-//                    }
-//                    );
-
+                        gridView.setOnItemClickListener(
+                                new AdapterView.OnItemClickListener()
+                                {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position,
+                                                            long id) {
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        ShowPhotoPager showPhotoPager = new ShowPhotoPager();
+                                        showPhotoPager.setArguments(photoModel.getAttachments());
+                                        fragmentManager.beginTransaction()
+                                                .replace(R.id.container, showPhotoPager)
+                                                .addToBackStack("GalleryFragment")
+                                                .commit();
+                                    }
+                                }
+                        );
                     pDialog.dismiss();
                     }
 

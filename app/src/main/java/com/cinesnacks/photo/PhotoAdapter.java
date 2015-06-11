@@ -31,7 +31,6 @@ public class PhotoAdapter extends ArrayAdapter<Post> {
         Post post = getItem(position);
         TextView title = (TextView)theRow.findViewById(R.id.textViewPhotoTitle);
         ImageView icon = (ImageView)theRow.findViewById (R.id.photoImage);
-
         new DownloadImage(icon, new DownloadImageListener() {
             @Override
             public void gotImage(Bitmap bitmap) {
@@ -40,22 +39,6 @@ public class PhotoAdapter extends ArrayAdapter<Post> {
             public void gotError() {
             }
         } ).execute(post.getThumbnailImages().getTieSmall().getUrl());
-//        Bitmap bitmap = post.getBitmapThumbnail();
-//        if(bitmap != null) {
-//            icon.setImageBitmap(bitmap);
-//        }else {
-//            new DownloadImage(icon, new DownloadImageListener() {
-//                @Override
-//                public void gotImage(Bitmap bitmap) {
-//                    icon.setImageBitmap(bitmap);
-//                }
-//                @Override
-//                public void gotError() {
-//
-//                }
-//            } ).execute(post.getThumbnail());
-//        }
-//        TextView description = (TextView)theRow.findViewById(R.id.textView2);google
         title.setText(post.getTitle());
         return theRow;
     }
