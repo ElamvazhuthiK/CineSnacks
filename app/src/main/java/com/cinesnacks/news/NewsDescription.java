@@ -49,6 +49,9 @@ public final class NewsDescription extends Fragment {
                         TextView textViewNewsTitle = (TextView) rootView.findViewById(R.id.textViewNewsTitle);
                         textViewNewsTitle.setText(newsModel.getDescTitle());
                         WebView newsDesc = (WebView) rootView.findViewById(R.id.webViewNewsDesc);
+                        newsDesc.getSettings().setLoadWithOverviewMode(true);
+                        newsDesc.getSettings().setUseWideViewPort(true);
+                        newsDesc.getSettings().setTextZoom(300);
                         newsDesc.loadData(newsModel.getDescContent(), "text/html; charset=utf-8", null);
                         pDialog.dismiss();
                     }

@@ -20,9 +20,11 @@ import java.util.List;
  */
 public class NewsDescPager extends Fragment {
     View rootView;
+    int currentPosition;
     public List<Post> newsPostList;
-    public void setArguments(List<Post> newsPostList) {
+    public void setArguments(List<Post> newsPostList, int position) {
         this.newsPostList = newsPostList;
+        currentPosition = position;
     }
 
     @Override
@@ -31,6 +33,7 @@ public class NewsDescPager extends Fragment {
         FragmentPagerAdapter adapter = new NewsPagerAdapter(getActivity().getSupportFragmentManager());
         ViewPager pager = (ViewPager)rootView.findViewById(R.id.newsPager);
         pager.setAdapter(adapter);
+        pager.setCurrentItem(currentPosition, true);
         return rootView;
     }
 

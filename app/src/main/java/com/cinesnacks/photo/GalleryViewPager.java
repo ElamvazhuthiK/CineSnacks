@@ -20,8 +20,10 @@ import java.util.List;
  */
 public class GalleryViewPager extends Fragment {
     View rootView;
+    int currentPosition;
     public List<Post> photosPostList;
-    public void setArguments(List<Post> photosPostList) {
+    public void setArguments(List<Post> photosPostList, int position) {
+        currentPosition = position;
         this.photosPostList = photosPostList;
     }
 
@@ -31,6 +33,7 @@ public class GalleryViewPager extends Fragment {
         FragmentPagerAdapter adapter = new PhotosPagerAdapter(getActivity().getSupportFragmentManager());
         ViewPager pager = (ViewPager)rootView.findViewById(R.id.galleryPager);
         pager.setAdapter(adapter);
+        pager.setCurrentItem(currentPosition, true);
         return rootView;
     }
 

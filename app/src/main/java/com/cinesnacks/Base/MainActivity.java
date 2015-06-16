@@ -1,7 +1,6 @@
 package com.cinesnacks.base;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -48,22 +47,22 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment containerFragment;
+//        Fragment containerFragment;
 //        String backStackFragment;
         switch (position) {
             case 1:
-                containerFragment = new MainViewPager();
-//                backStackFragment = "MainViewPager";
+                MainViewPager mainViewPager = new MainViewPager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, mainViewPager)
+                        .commit();
                 break;
             default:
-                containerFragment = new NewsFragment();
-//                backStackFragment = "NewsFragment";
+                NewsFragment newsFragment = new NewsFragment();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, newsFragment)
+                        .commit();
                 break;
         }
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, containerFragment)
-//                .addToBackStack("NewsFragment")
-                .commit();
     }
 
     public void onSectionAttached(int number) {

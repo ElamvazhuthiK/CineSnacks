@@ -57,7 +57,7 @@ public class GalleryFragment extends Fragment {
                                                             long id) {
                                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                         ShowPhotoPager showPhotoPager = new ShowPhotoPager();
-                                        showPhotoPager.setArguments(photoModel.getAttachments());
+                                        showPhotoPager.setArguments(photoModel.getAttachments(), position);
                                         fragmentManager.beginTransaction()
                                                 .replace(R.id.container, showPhotoPager)
                                                 .addToBackStack("GalleryFragment")

@@ -20,11 +20,13 @@ import com.example.elamvazhuthik.cinesnacks.R;
 public class ShowPhotoFragment extends Fragment {
     View rootView;
     String imageURL;
+    int currentPosition;
 
     @Override
     public void setArguments(Bundle args) {
         super.setArguments(args);
         this.imageURL = args.getString("imageURL");
+        this.currentPosition = args.getInt("position");
     }
 
     @Override

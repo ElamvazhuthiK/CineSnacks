@@ -6,11 +6,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="ClapBoard"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.cinesnacks.base.MainActivity"
-            android:label="@string/app_name" >
+            android:screenOrientation="portrait"
+            android:label="ClapBoard" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

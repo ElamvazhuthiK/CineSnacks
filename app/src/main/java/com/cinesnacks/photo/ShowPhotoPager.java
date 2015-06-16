@@ -21,8 +21,10 @@ import java.util.List;
 public class ShowPhotoPager extends Fragment {
     View rootView;
     public List<Attachment> photosAttachmentList;
-    public void setArguments(List<Attachment> photosAttachmentList) {
+    int currentPosition;
+    public void setArguments(List<Attachment> photosAttachmentList, int position) {
         this.photosAttachmentList = photosAttachmentList;
+        currentPosition = position;
     }
 
     @Override
@@ -30,6 +32,7 @@ public class ShowPhotoPager extends Fragment {
         rootView = inflater.inflate(R.layout.showphotoviewpager_layout, container, false);
         FragmentPagerAdapter adapter = new ShowPhotoPagerAdapter(getActivity().getSupportFragmentManager());
         ViewPager pager = (ViewPager)rootView.findViewById(R.id.showPhotoPager);
+        pager.setCurrentItem(currentPosition, true);
         pager.setAdapter(adapter);
         return rootView;
     }
@@ -45,6 +48,7 @@ public class ShowPhotoPager extends Fragment {
             ShowPhotoFragment frg = new ShowPhotoFragment();
             Bundle bundle = new Bundle();
             bundle.putString("imageURL", attachment.getImages().getLarge().getUrl());
+            bundle.putInt("position", position);
             frg.setArguments(bundle);
             return frg;
         }

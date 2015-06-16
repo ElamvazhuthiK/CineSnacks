@@ -45,10 +45,10 @@ public class PhotoFragment extends Fragment {
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                         GalleryViewPager galleryViewPager = new GalleryViewPager();
-                                        galleryViewPager.setArguments(photoModel.getPosts());
+                                        galleryViewPager.setArguments(photoModel.getPosts(), position);
                                         fragmentManager.beginTransaction()
                                                 .replace(R.id.container, galleryViewPager)
-                                                .addToBackStack("GalleryViewPager")
+                                                .addToBackStack("MainViewPager")
                                                 .commit();
                                     }
                                 }

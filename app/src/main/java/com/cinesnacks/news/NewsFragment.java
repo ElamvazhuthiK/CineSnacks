@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.elamvazhuthik.cinesnacks.R;
@@ -38,8 +37,7 @@ public class NewsFragment extends Fragment {
             @Override
             public void response(Object response) {
                 ListView listView = (ListView)rootView.findViewById(R.id.listView);
-
-                ListAdapter newsAdapter = new NewsAdapter(getActivity().getBaseContext(), newsModel.getPosts());
+                NewsAdapter newsAdapter = new NewsAdapter(getActivity().getBaseContext(), newsModel.getPosts());
                 listView.setAdapter(newsAdapter);
                 listView.setOnItemClickListener(
                         new AdapterView.OnItemClickListener(){
@@ -47,15 +45,14 @@ public class NewsFragment extends Fragment {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                 NewsDescPager newsDescPager = new NewsDescPager();
-                                newsDescPager.setArguments(newsModel.getPosts());
+                                newsDescPager.setArguments(newsModel.getPosts(), position);
                                 fragmentManager.beginTransaction()
                                         .replace(R.id.container, newsDescPager)
-                                        .addToBackStack("NewsDescPager")
+                                        .addToBackStack("MainViewPager")
                                         .commit();
                             }
                         }
                 );
-
                 pDialog.dismiss();
             }
 
@@ -67,15 +64,4 @@ public class NewsFragment extends Fragment {
 
         return rootView;
     }
-
-//    public void onBackPressed()
-//    {
-//        // Catch back action and pops from backstack
-//        // (if you called previously to addToBackStack() in your transaction)
-//        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0){
-//            getActivity().getSupportFragmentManager().popBackStack();
-//        }
-//        // Default action on back pressed
-//        else super.getActivity().onBackPressed();
-//    }
 }

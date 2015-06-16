@@ -29,9 +29,9 @@ public class NewsAdapter extends ArrayAdapter<Post> {
         LayoutInflater theInflater = LayoutInflater.from(getContext());
         View theRow = theInflater.inflate(R.layout.newsrow_layout, parent, false);
         Post post = getItem(position);
-        TextView title = (TextView)theRow.findViewById(R.id.textViewNewsTitle);
+        TextView title = (TextView)theRow.findViewById(R.id.textViewCellNewsTitle);
         ImageView icon = (ImageView)theRow.findViewById (R.id.newsImage);
-
+        String url = post.getThumbnail();
         new DownloadImage(icon, new DownloadImageListener() {
             @Override
             public void gotImage(Bitmap bitmap) {
@@ -39,23 +39,7 @@ public class NewsAdapter extends ArrayAdapter<Post> {
             @Override
             public void gotError() {
             }
-        } ).execute(post.getThumbnailImages().getTieSmall().getUrl());
-//        Bitmap bitmap = post.getBitmapThumbnail();
-//        if(bitmap != null) {
-//            icon.setImageBitmap(bitmap);
-//        }else {
-//            new DownloadImage(icon, new DownloadImageListener() {
-//                @Override
-//                public void gotImage(Bitmap bitmap) {
-//                    icon.setImageBitmap(bitmap);
-//                }
-//                @Override
-//                public void gotError() {
-//
-//                }
-//            } ).execute(post.getThumbnail());
-//        }
-//        TextView description = (TextView)theRow.findViewById(R.id.textView2);google
+        } ).execute(url);
         title.setText(post.getTitle());
         return theRow;
     }

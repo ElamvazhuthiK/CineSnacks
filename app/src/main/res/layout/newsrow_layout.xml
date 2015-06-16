@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:id="@+id/textViewNewsTitle"
+        android:id="@+id/textViewCellNewsTitle"
         android:textSize="16sp"
         android:textStyle="bold"
          />
