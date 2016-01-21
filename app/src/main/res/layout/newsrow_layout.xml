@@ -7,7 +7,7 @@
         android:id="@+id/newsImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/ic_drawer"
+        android:src="@drawable/loading"
         />
     <TextView
         android:layout_weight="1"
@@ -16,7 +16,7 @@
         android:paddingLeft="5dp"
         android:id="@+id/textViewCellNewsTitle"
         android:textSize="16sp"
-        android:textStyle="bold"
-         />
-
+        android:textColor="@color/background_material_dark"
+        android:textStyle="normal"
+        />
 </LinearLayout>

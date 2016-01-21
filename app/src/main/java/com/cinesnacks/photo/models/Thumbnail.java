@@ -3,7 +3,7 @@ package com.cinesnacks.photo.models;
 /**
  * Created by ElamvazhuthiK on 5/27/15.
  */
-import javax.annotation.Generated;
+//import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 
 //@Generated("org.jsonschema2pojo")

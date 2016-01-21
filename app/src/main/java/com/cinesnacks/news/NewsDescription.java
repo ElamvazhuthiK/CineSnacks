@@ -3,20 +3,20 @@ package com.cinesnacks.news;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.cinesnacks.base.BaseFragment;
 import com.example.elamvazhuthik.cinesnacks.R;
 
 
 /**
  * Created by ElamvazhuthiK on 17/04/15.
  */
-public final class NewsDescription extends Fragment {
+public final class NewsDescription extends BaseFragment implements NewsModelListener {
     View rootView;
     String strNewsDesc;
     ProgressDialog pDialog;
@@ -42,25 +42,25 @@ public final class NewsDescription extends Fragment {
         pDialog.setMessage("Loading Description ....");
         pDialog.show();
         String url = "http://clapboard.co.in/?json=get_post&post_id="+ postID +"&exclude=thumbnail,custom_fields,attachments,tags,categories,excerpt,title_plain,status,url,slug,type,author,comments,comment_count,comment_status,previous_url";
-        newsModel.sendNewsDescRequest(container.getContext(), url,
-                new NewsModelListener() {
-                    @Override
-                    public void response(Object response) {
-                        TextView textViewNewsTitle = (TextView) rootView.findViewById(R.id.textViewNewsTitle);
-                        textViewNewsTitle.setText(newsModel.getDescTitle());
-                        WebView newsDesc = (WebView) rootView.findViewById(R.id.webViewNewsDesc);
-                        newsDesc.getSettings().setLoadWithOverviewMode(true);
-                        newsDesc.getSettings().setUseWideViewPort(true);
-                        newsDesc.getSettings().setTextZoom(300);
-                        newsDesc.loadData(newsModel.getDescContent(), "text/html; charset=utf-8", null);
-                        pDialog.dismiss();
-                    }
-
-                    @Override
-                    public void error(String error) {
-                        pDialog.dismiss();
-                    }
-                });
+        newsModel.sendNewsDescRequest(container.getContext(), url, this);
         return rootView;
+    }
+
+    @Override
+    public void response(Object response) {
+        TextView textViewNewsTitle = (TextView) rootView.findViewById(R.id.textViewNewsTitle);
+        textViewNewsTitle.setText(newsModel.getDescTitle());
+        WebView newsDesc = (WebView) rootView.findViewById(R.id.webViewNewsDesc);
+        newsDesc.getSettings().setLoadWithOverviewMode(true);
+        newsDesc.getSettings().setUseWideViewPort(true);
+        newsDesc.getSettings().setTextZoom(300);
+        newsDesc.loadData(newsModel.getDescContent(), "text/html; charset=utf-8", null);
+        pDialog.dismiss();
+    }
+
+    @Override
+    public void error(String error) {
+        super.error(error);
+        pDialog.dismiss();
     }
 }

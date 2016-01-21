@@ -11,6 +11,6 @@
         android:paddingBottom="1dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_drawer"
+        android:src="@drawable/loading"
         />
 </LinearLayout>

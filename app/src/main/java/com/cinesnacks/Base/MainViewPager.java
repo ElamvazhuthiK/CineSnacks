@@ -25,6 +25,7 @@ public class MainViewPager extends Fragment {
     private static final int NEWS_PAGE = 0;
     private static final int PHOTO_PAGE = 1;
     private static final int VIDEO_PAGE = 2;
+    MainPagerAdapter adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +35,15 @@ public class MainViewPager extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.mainviewpager_layout, container, false);
-        FragmentPagerAdapter adapter = new MainPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter = new MainPagerAdapter(getActivity().getSupportFragmentManager());
         ViewPager pager = (ViewPager)rootView.findViewById(R.id.mainPager);
         pager.setAdapter(adapter);
         return rootView;
     }
 
-    class MainPagerAdapter extends FragmentPagerAdapter {
+    private class MainPagerAdapter extends FragmentPagerAdapter {
+//        private long baseId = 0;
+
         public MainPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -68,5 +71,16 @@ public class MainViewPager extends Fragment {
         public int getCount() {
             return CONTENT.length;
         }
+
+//        @Override
+//        public Object instantiateItem(ViewGroup container, int position) {
+//            BaseFragment fragment = (BaseFragment)super.instantiateItem(container, position);
+//            fragment.loadData(container);
+//            return fragment;
+//        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

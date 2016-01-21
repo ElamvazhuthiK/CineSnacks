@@ -43,7 +43,6 @@ public class BaseModel implements HTTPResponseListener {
     public void handleResponse(String response)
     {
     }
-
     public void handleError(VolleyError error)
     {
     }
